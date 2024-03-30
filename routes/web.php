@@ -15,6 +15,8 @@ Route::get('/todo/update/{listId}', \App\Http\Controllers\ToDo\Update\IndexContr
 ->name('todo.update.index')->where('listId', '[0-9]+');
 Route::put('/todo/update/{listId}', \App\Http\Controllers\ToDo\Update\PutController::class)
 ->name('todo.update.put')->where('listId', '[0-9]+');
+Route::delete('/todo/delete/{listId}', \App\Http\Controllers\ToDo\DeleteController::class)
+->name('todo.delete');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
