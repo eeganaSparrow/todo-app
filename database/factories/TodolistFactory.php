@@ -18,9 +18,7 @@ class TodolistFactory extends Factory
     {
         return [
             'content' => $this->faker->realText(30),
-            'expiration_time' => '2024/03/29 17:00',
-            'completion_flag' => false,
-            'completion_time' => '2024/03/29 17:00',
+            'expiration_time' => '2024/03/29',
             'created_at' => now(),
             'updated_at' => now(),
         ];

@@ -7,7 +7,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/todo', \App\Http\Controllers\ToDo\IndexController::class);
+Route::get('/todo', \App\Http\Controllers\ToDo\IndexController::class)
+->name('todo.index');
+Route::post('/todo/create', \App\Http\Controllers\ToDo\CreateController::class)
+->name('todo.create');
 
 Route::get('/dashboard', function () {
     return view('dashboard');

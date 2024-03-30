@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('todolists', function (Blueprint $table) {
             $table->id();
             $table->string('content');
-            $table->dateTime('expiration_time');
-            $table->boolean('completion_flag');
-            $table->dateTime('completion_time');
+            $table->date('expiration_time');
+            $table->boolean('completion_flag')->default(false);
+            $table->date('completion_time')->nullable()->default(null);
             $table->timestamps();
         });
     }
