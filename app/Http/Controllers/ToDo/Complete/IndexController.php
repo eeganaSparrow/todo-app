@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\ToDo;
+namespace App\Http\Controllers\ToDo\Complete;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -13,14 +13,14 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $todolists = Todolist::where('completion_flag', false)
-                    ->orderBy('expiration_time', 'asc')
+        $todolists = Todolist::where('completion_flag', true)
+                    ->orderBy('expiration_time', 'desc')
                     ->get();
-        $expirationGroup = Todolist::where('completion_flag', false)
+        $expirationGroup = Todolist::where('completion_flag', true)
                         ->groupBy('expiration_time')
-                        ->orderBy('expiration_time', 'asc')
+                        ->orderBy('expiration_time', 'desc')
                         ->pluck('expiration_time');
-        return view('todo.index')
+        return view('todo.complete')
             ->with('todolists', $todolists)
             ->with('expirationGroup', $expirationGroup);
     }

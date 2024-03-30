@@ -1,12 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\ToDo;
+namespace App\Http\Controllers\ToDo\Complete;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Todolist;
 
-class DeleteController extends Controller
+class UnCompleteController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -15,13 +15,10 @@ class DeleteController extends Controller
     {
         $listId = (int) $request->route('listId');
         $todolist = Todolist::where('id', $listId)->firstOrFail();
-        $todolist->delete();
-        if ($todolist->completion_flag){
-            return redirect()
-                ->route('todo.complete.index');
-        } else {
-            return redirect()
-                ->route('todo.index');
-        }
+        $todolist->completion_flag = false;
+        $todolist->completion_time = null;
+        $todolist->save();
+        return redirect()
+            ->route('todo.complete.index');
     }
 }
