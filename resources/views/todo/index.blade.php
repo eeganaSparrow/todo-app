@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>ToDoリスト</h1>
+    <a href="{{ route('todo.complete.index') }}">完了済みリストを表示</a>
     <div>
         <p>入力フォーム</p>
         <form action="{{ route('todo.create') }}" method="post">
@@ -26,6 +27,10 @@
             @foreach($todolists as $todolist)
                 @if ($todolist->expiration_time === $expirationtime)
                     <span>　　　{{ $todolist->content }}　　　　</span>
+                    <form action="{{ route('todo.complete', ['listId' => $todolist->id]) }}" method='post'>
+                        @csrf
+                        <button type="submit">完了</button>
+                    </form>
                     <a href="{{ route('todo.update.index', ['listId' => $todolist->id]) }}">編集</a>
                     <form action="{{ route('todo.delete', ['listId' => $todolist->id]) }}" method='post'>
                         @method('delete')
