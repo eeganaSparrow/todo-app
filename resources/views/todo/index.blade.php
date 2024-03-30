@@ -23,7 +23,8 @@
     <div>
         @foreach($todolists as $todolist)
             <p>期限：{{ $todolist->expiration_time }}</p>
-            <p>　　　{{ $todolist->content }}</p>
+            <span>　　　{{ $todolist->content }}　　　　</span>
+            <a href="{{ route('todo.update.index', ['listId' => $todolist->id]) }}">編集</a>
         @endforeach
     </div>
 </body>

@@ -11,6 +11,10 @@ Route::get('/todo', \App\Http\Controllers\ToDo\IndexController::class)
 ->name('todo.index');
 Route::post('/todo/create', \App\Http\Controllers\ToDo\CreateController::class)
 ->name('todo.create');
+Route::get('/todo/update/{listId}', \App\Http\Controllers\ToDo\Update\IndexController::class)
+->name('todo.update.index')->where('listId', '[0-9]+');
+Route::put('/todo/update/{listId}', \App\Http\Controllers\ToDo\Update\PutController::class)
+->name('todo.update.put')->where('listId', '[0-9]+');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
