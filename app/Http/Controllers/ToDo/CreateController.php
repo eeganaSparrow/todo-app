@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\ToDo;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Http\Requests\ToDo\CreateRequest;
 use App\Models\Todolist;
 
