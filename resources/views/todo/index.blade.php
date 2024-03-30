@@ -25,6 +25,11 @@
             <p>期限：{{ $todolist->expiration_time }}</p>
             <span>　　　{{ $todolist->content }}　　　　</span>
             <a href="{{ route('todo.update.index', ['listId' => $todolist->id]) }}">編集</a>
+            <form action="{{ route('todo.delete', ['listId' => $todolist->id]) }}" method='post'>
+                @method('delete')
+                @csrf
+                <button type="submit">削除</button>
+            </form>
         @endforeach
     </div>
 </body>
