@@ -21,15 +21,19 @@
         </form>
     </div>
     <div>
-        @foreach($todolists as $todolist)
-            <p>期限：{{ $todolist->expiration_time }}</p>
-            <span>　　　{{ $todolist->content }}　　　　</span>
-            <a href="{{ route('todo.update.index', ['listId' => $todolist->id]) }}">編集</a>
-            <form action="{{ route('todo.delete', ['listId' => $todolist->id]) }}" method='post'>
-                @method('delete')
-                @csrf
-                <button type="submit">削除</button>
-            </form>
+        @foreach($expirationGroup as $expirationtime)
+            <p>期限：{{ $expirationtime }}</p>
+            @foreach($todolists as $todolist)
+                @if ($todolist->expiration_time === $expirationtime)
+                    <span>　　　{{ $todolist->content }}　　　　</span>
+                    <a href="{{ route('todo.update.index', ['listId' => $todolist->id]) }}">編集</a>
+                    <form action="{{ route('todo.delete', ['listId' => $todolist->id]) }}" method='post'>
+                        @method('delete')
+                        @csrf
+                        <button type="submit">削除</button>
+                    </form>
+                @endif
+            @endforeach
         @endforeach
     </div>
 </body>
