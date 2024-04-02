@@ -33,4 +33,8 @@ class CreateRequest extends FormRequest
     public function expirationTime(){
         return $this->input('expiration_time');
     }
+
+    public function userId(): int{
+        return $this->user()->id;
+    }
 }

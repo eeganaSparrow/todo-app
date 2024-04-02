@@ -14,6 +14,7 @@ class CreateController extends Controller
     public function __invoke(CreateRequest $request)
     {
         $todolist = new Todolist;
+        $todolist->user_id = $request->userId();
         $todolist->content = $request->todo();
         $todolist->expiration_time = $request->expirationTime();
         $todolist->save();

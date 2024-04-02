@@ -15,8 +15,9 @@ class IndexController extends Controller
     {
         $listId = (int) $request->route('listId');
         $todolist = $todoService->getTodolistByID($listId);
-        $todolists = $todoService->getTodolistsAsc();
-        $expirationGroup = $todoService->getExpirationGroupAsc();
+        $userId = $request->user()->id;
+        $todolists = $todoService->getTodolistsAsc($userId);
+        $expirationGroup = $todoService->getExpirationGroupAsc($userId);
         return view('todo.index')
             ->with('todolists', $todolists)
             ->with('expirationGroup', $expirationGroup)

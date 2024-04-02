@@ -3,26 +3,26 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
+Route::get('/', \App\Http\Controllers\ToDo\IndexController::class);
 Route::get('/todo', \App\Http\Controllers\ToDo\IndexController::class)
 ->name('todo.index');
-Route::post('/todo/create', \App\Http\Controllers\ToDo\CreateController::class)
-->name('todo.create');
-Route::get('/todo/update/{listId}', \App\Http\Controllers\ToDo\Update\IndexController::class)
-->name('todo.update.index')->where('listId', '[0-9]+');
-Route::put('/todo/update/{listId}', \App\Http\Controllers\ToDo\Update\PutController::class)
-->name('todo.update.put')->where('listId', '[0-9]+');
-Route::delete('/todo/delete/{listId}', \App\Http\Controllers\ToDo\DeleteController::class)
-->name('todo.delete');
-Route::post('todo/complete/{listId}', \App\Http\Controllers\ToDo\CompleteController::class)
-->name('todo.complete');
-Route::post('todo/uncomplete/{listId}', \App\Http\Controllers\ToDo\Complete\UnCompleteController::class)
-->name('todo.uncomplete');
-Route::get('todo/complete', \App\Http\Controllers\ToDo\Complete\IndexController::class)
-->name('todo.complete.index');
+
+Route::middleware('auth')->group(function () {
+    Route::post('/todo/create', \App\Http\Controllers\ToDo\CreateController::class)
+    ->name('todo.create');
+    Route::get('/todo/update/{listId}', \App\Http\Controllers\ToDo\Update\IndexController::class)
+    ->name('todo.update.index')->where('listId', '[0-9]+');
+    Route::put('/todo/update/{listId}', \App\Http\Controllers\ToDo\Update\PutController::class)
+    ->name('todo.update.put')->where('listId', '[0-9]+');
+    Route::delete('/todo/delete/{listId}', \App\Http\Controllers\ToDo\DeleteController::class)
+    ->name('todo.delete');
+    Route::post('todo/complete/{listId}', \App\Http\Controllers\ToDo\CompleteController::class)
+    ->name('todo.complete');
+    Route::post('todo/uncomplete/{listId}', \App\Http\Controllers\ToDo\Complete\UnCompleteController::class)
+    ->name('todo.uncomplete');
+    Route::get('todo/complete', \App\Http\Controllers\ToDo\Complete\IndexController::class)
+    ->name('todo.complete.index');    
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
