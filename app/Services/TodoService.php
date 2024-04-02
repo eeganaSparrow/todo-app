@@ -6,8 +6,7 @@ use App\Models\Todolist;
 
 class TodoService{
     public function getTodolistsAsc(){
-        return Todolist::where('completion_flag', false)
-            ->orderBy('expiration_time', 'asc')
+        return Todolist::orderBy('expiration_time', 'desc')
             ->get();
     }
 
@@ -20,7 +19,7 @@ class TodoService{
     public function getExpirationGroupAsc(){
         return Todolist::where('completion_flag', false)
             ->groupBy('expiration_time')
-            ->orderBy('expiration_time', 'asc')
+            ->orderBy('expiration_time', 'desc')
             ->pluck('expiration_time');
     }
 
