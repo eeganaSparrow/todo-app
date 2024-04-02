@@ -22,7 +22,7 @@ class CreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'todolist' =>'required|max:100',
+            'todolist' =>'required|max:75',
             'expiration_time' =>'required|date'
         ];
     }
