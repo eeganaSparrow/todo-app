@@ -1,3 +1,4 @@
+@auth
 <div>
     <form action="{{ route('todo.create') }}" method="post">
         @csrf
@@ -25,3 +26,12 @@
         </div>
     </form>
 </div>
+@endauth
+@guest
+    <div class="flex flex-wrap justify-center">
+        <div class="flex flex-wrap justify-evenly p-4 w-1/2">
+            <x-element.button-a :href="route('login')">ログイン</x-element.button-a>
+            <x-element.button-a :href="route('register')" theme="secondary">会員登録</x-element.button-a>
+        </div>
+    </div>
+@endguest

@@ -9,6 +9,7 @@
         <x-todo.form.update :todolist="$todolist"></x-todo.form.update>
         @endif
     </x-layout.single>
-    <x-todo.list :todolists="$todolists" :expirationGroup="$expirationGroup"></x-todo.list>
-
+    @if(isset($todolists))
+        <x-todo.list :todolists="$todolists" :expirationGroup="$expirationGroup"></x-todo.list>
+    @endif
 </x-layout> 

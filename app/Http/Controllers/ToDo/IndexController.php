@@ -14,10 +14,15 @@ class IndexController extends Controller
      */
     public function __invoke(Request $request, TodoService $todoService)
     {
-        $todolists = $todoService->getTodolistsAsc();
-        $expirationGroup = $todoService->getExpirationGroupAsc();
-        return view('todo.index')
-            ->with('todolists', $todolists)
-            ->with('expirationGroup', $expirationGroup);
+        if(is_null($request->user())){
+            return view('todo.index');
+        } else {
+            $userId = $request->user()->id;
+            $todolists = $todoService->getTodolistsAsc($userId);
+            $expirationGroup = $todoService->getExpirationGroupAsc($userId);
+            return view('todo.index')
+                ->with('todolists', $todolists)
+                ->with('expirationGroup', $expirationGroup);
+        }
     }
 }

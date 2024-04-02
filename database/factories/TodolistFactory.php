@@ -17,6 +17,7 @@ class TodolistFactory extends Factory
     public function definition(): array
     {
         return [
+            'user_id' => 1,
             'content' => $this->faker->realText(30),
             'expiration_time' => '2024/03/29',
             'created_at' => now(),

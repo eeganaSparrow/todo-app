@@ -16,12 +16,7 @@ class DeleteController extends Controller
         $listId = (int) $request->route('listId');
         $todolist = $todoService->getTodolistByID($listId);
         $todolist->delete();
-        if ($todolist->completion_flag){
-            return redirect()
-                ->route('todo.complete.index');
-        } else {
-            return redirect()
-                ->route('todo.index');
-        }
+        return redirect()
+            ->route('todo.index');
     }
 }
