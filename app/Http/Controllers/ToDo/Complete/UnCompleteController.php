@@ -20,6 +20,6 @@ class UnCompleteController extends Controller
         $todolist->completion_time = null;
         $todolist->save();
         return redirect()
-            ->route('todo.complete.index');
+            ->route('todo.index');
     }
 }

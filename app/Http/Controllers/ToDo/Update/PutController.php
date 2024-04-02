@@ -18,7 +18,6 @@ class PutController extends Controller
         $todolist->expiration_time = $request->expirationTime();
         $todolist->save();
         return redirect()
-            ->route('todo.update.index', ['listId' => $todolist->id])
-            ->with('feedback.success', "リストを編集しました");
+            ->route('todo.index');
     }
 }
