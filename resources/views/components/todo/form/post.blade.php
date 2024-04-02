@@ -19,6 +19,9 @@
                 rounded-md border-gray-300
                 sm:text-md
                 focus:ring-green-400 focus:border-green-400"></textarea>
+        @error('todolist')
+            <x-alert.error>{{ $message }}</x-alert.error>
+        @enderror
         <div class="flex flex-wrap justify-end">
             <x-element.button>
                 追加
