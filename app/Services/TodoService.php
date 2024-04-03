@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Models\Todolist;
+use App\Models\User;
 
 
 class TodoService{
@@ -42,5 +43,13 @@ class TodoService{
 
     public function getTodolistByID(int $listId){
         return Todolist::where('id', $listId)->firstOrFail();
+    }
+
+    public function getToDolistByUserId(int $userId){
+        return Todolist::where('user_id', $userId)->get();
+    }
+
+    public function getUserByUserId(int $userId){
+        return User::where('id', $userId)->get();
     }
 }
