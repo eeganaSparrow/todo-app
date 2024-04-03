@@ -26,6 +26,8 @@ Route::middleware('auth')->group(function () {
     ->name('uncomplist.index');
     Route::get('todo/complist', \App\Http\Controllers\ToDo\Display\ComplistController::class)
     ->name('complist.index');
+    Route::delete('todo/user/delete', \App\Http\Controllers\ToDo\User\DeleteController::class)
+    ->name('todo.user.delete');
 });
 
 Route::get('/dashboard', function () {
