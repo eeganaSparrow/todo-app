@@ -1,5 +1,5 @@
 @auth
-<div>
+<div class="mx-5">
     <form action="{{ route('todo.create') }}" method="post">
         @csrf
         <input

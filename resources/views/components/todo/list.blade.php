@@ -4,13 +4,13 @@
 ])
 <div>
     @foreach($expirationGroup as $expirationtime)
-        <p class="text-xl mt-5 ml-32 mb-1">期限：{{ $expirationtime }}</p>
-            <div class="flex flex-wrap justify-center mx-32 last:mb-20">
-                <div class="w-1/2">
+        <p class="text-xl mt-5 mb-2 ml-2">期限：{{ $expirationtime }}</p>
+            <div class="flex flex-wrap flex-between justify-items-center mx-5 last:mb-20">
+                <div class="flex-item">
                     @foreach($todolists as $todolist)
                         @if (!$todolist->completion_flag)
                             @if ($todolist->expiration_time === $expirationtime)
-                                <div class="block p-4 mb-2 ml-5 last:mb-2
+                                <div class="block p-4 mb-2 last:mb-2
                                         border rounded-xl bg-yellow-100
                                         flex justify-items-start justify-between">
                                     <div class="pt-4 px-2">
@@ -26,11 +26,11 @@
                         @endif
                     @endforeach
                 </div>
-                <div class="w-1/2">
+                <div class="flex-item">
                     @foreach($todolists as $todolist)
                         @if ($todolist->completion_flag)
                             @if ($todolist->expiration_time === $expirationtime)
-                                <div class="block p-4 mb-2 ml-5 last:mb-2
+                                <div class="block p-4 mb-2 last:mb-2
                                             border rounded-xl bg-yellow-100">
                                     <div class="flex justify-items-start justify-between">
                                         <div class="pt-4 px-2">
@@ -55,3 +55,13 @@
             </div>
     @endforeach
 </div>
+@push('css')
+<style>
+    .flex-item {
+        width: calc((100% - 32px) / 2);
+        margin-left: 8px;
+        margin-right: 8px;
+        min-width: 340px;
+    }
+</style>
+@endpush
