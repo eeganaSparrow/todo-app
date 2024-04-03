@@ -21,7 +21,11 @@ Route::middleware('auth')->group(function () {
     Route::post('todo/uncomplete/{listId}', \App\Http\Controllers\ToDo\Complete\UnCompleteController::class)
     ->name('todo.uncomplete');
     Route::get('todo/complete', \App\Http\Controllers\ToDo\Complete\IndexController::class)
-    ->name('todo.complete.index');    
+    ->name('todo.complete.index'); 
+    Route::get('todo/uncomplist', \App\Http\Controllers\ToDo\Display\UnComplistController::class)
+    ->name('uncomplist.index');
+    Route::get('todo/complist', \App\Http\Controllers\ToDo\Display\ComplistController::class)
+    ->name('complist.index');
 });
 
 Route::get('/dashboard', function () {

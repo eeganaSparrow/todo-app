@@ -1,13 +1,12 @@
 <?php
 
-namespace App\Http\Controllers\ToDo;
+namespace App\Http\Controllers\ToDo\Display;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Services\TodoService;
 
-
-class IndexController extends Controller
+class UnComplistController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -19,8 +18,8 @@ class IndexController extends Controller
         } else {
             $userId = $request->user()->id;
             $todolists = $todoService->getTodolistsAsc($userId);
-            $expirationGroup = $todoService->getExpirationGroupAsc($userId);
-            $display = '';
+            $expirationGroup = $todoService->getExpirationGroupUnComp($userId);
+            $display = 'uncomp';
             return view('todo.index')
                 ->with('todolists', $todolists)
                 ->with('expirationGroup', $expirationGroup)

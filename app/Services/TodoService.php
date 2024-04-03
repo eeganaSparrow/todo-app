@@ -24,8 +24,17 @@ class TodoService{
             ->pluck('expiration_time');
     }
 
-    public function getExpirationGroupDesc(){
-        return Todolist::where('completion_flag', true)
+    public function getExpirationGroupComp($userId){
+        return Todolist::where('user_id', $userId)
+            ->where('completion_flag', true)
+            ->groupBy('expiration_time')
+            ->orderBy('expiration_time', 'desc')
+            ->pluck('expiration_time');
+    }
+
+    public function getExpirationGroupUnComp($userId){
+        return Todolist::where('user_id', $userId)
+            ->where('completion_flag', false)
             ->groupBy('expiration_time')
             ->orderBy('expiration_time', 'desc')
             ->pluck('expiration_time');
