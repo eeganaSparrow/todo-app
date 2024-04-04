@@ -87,7 +87,8 @@
                         border rounded-md border-transparent shadow-sm bg-red-400
                         hover:bg-red-300
                         focus:outline-none focus:ring-2 focus:ring-offset-2
-                        focus:ring-red-400">
+                        focus:ring-red-400"
+                        onclick="return confirm('削除してもよろしいですか？')">
                     まとめて削除
                 </button>
             </form>            
