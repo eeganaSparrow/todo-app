@@ -2,7 +2,7 @@
     <div class="max-w-screen-sm w-full">
         @auth
             <details class="list-option relative text-gray-500">
-                <summary class="flex justify-end p-4 text-lg">
+                <summary class="flex justify-end p-4 text-lg hover:text-gray-400">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mt-2">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                     </svg>
