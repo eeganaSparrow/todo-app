@@ -52,4 +52,10 @@ class TodoService{
     public function getUserByUserId(int $userId){
         return User::where('id', $userId)->get();
     }
+
+    public function getTodolistByDate(int $userId, $expirationtime){
+        return Todolist::where('user_id', $userId)
+            ->where('expiration_time', $expirationtime)
+            ->get();
+    }
 }
