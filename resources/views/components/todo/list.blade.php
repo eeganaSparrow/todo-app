@@ -75,7 +75,10 @@
 @else
 <div>
     @foreach($expirationGroup as $expirationtime)
-        <p class="text-xl mt-5 mb-2 ml-4">{{ $expirationtime }}</p>
+        <div class="flex">
+            <p class="text-xl mt-5 mb-2 mx-4">{{ $expirationtime }}</p>
+            <p class="text-md mt-5 mb-2 mx-4">まとめて削除</p>
+        </div>
         <div class="flex flex-wrap flex-between justify-items-center mx-5 last:mb-20">
             <div class="flex-item">
                 @foreach($todolists as $todolist)
