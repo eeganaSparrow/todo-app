@@ -6,7 +6,7 @@
         @if(!isset($todolist))
         <x-todo.form.post></x-todo.form.post>
         @else
-        <x-todo.form.update :todolist="$todolist"></x-todo.form.update>
+        <x-todo.form.update :todolist="$todolist" :display="$display"></x-todo.form.update>
         @endif
         
         @if(isset($display))

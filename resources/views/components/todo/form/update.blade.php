@@ -1,5 +1,9 @@
+@props([
+    'todolist' => [],
+    'display' => '',
+])
 <div>
-    <form action="{{ route('todo.update.put', ['listId' => $todolist->id]) }}" method="post">
+    <form action="{{ route('todo.update.put', ['listId' => $todolist->id, 'display' => $display]) }}" method="post">
         @method('PUT')
         @csrf
         <input

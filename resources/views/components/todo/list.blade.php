@@ -22,7 +22,7 @@
                                     </form>
                                 </div>
                                 <span class="flex-wrap p-5 justify-items-start">{{ $todolist->content }}</span>
-                                <x-todo.options :todolist="$todolist"></x-todo.options>
+                                <x-todo.options :todolist="$todolist" :display="$display"></x-todo.options>
                             </div>
                         @endif
                     @endif
@@ -91,7 +91,7 @@
                                     </form>
                                 </div>
                                 <span class="flex-wrap p-5 justify-items-start">{{ $todolist->content }}</span>
-                                <x-todo.options :todolist="$todolist"></x-todo.options>
+                                <x-todo.options :todolist="$todolist" :display="$display"></x-todo.options>
                             </div>
                         @endif
                     @endif

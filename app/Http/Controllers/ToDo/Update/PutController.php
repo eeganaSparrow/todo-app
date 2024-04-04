@@ -17,7 +17,14 @@ class PutController extends Controller
         $todolist->content = $request->todo();
         $todolist->expiration_time = $request->expirationTime();
         $todolist->save();
-        return redirect()
-            ->route('todo.index');
+        $display = $request->input('display');
+        if ($display === 'uncomp'){
+            return redirect()
+                ->route('uncomplist.index');
+        } else {
+            return redirect()
+                ->route('todo.index');
+        }
+        
     }
 }
