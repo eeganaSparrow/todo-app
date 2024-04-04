@@ -28,6 +28,8 @@ Route::middleware('auth')->group(function () {
     ->name('complist.index');
     Route::delete('todo/user/delete', \App\Http\Controllers\ToDo\User\DeleteController::class)
     ->name('todo.user.delete');
+    Route::delete('/todo/deletebydate', \App\Http\Controllers\ToDo\DeleteByDateController::class)
+    ->name('todo.deletebydate');
 });
 
 Route::get('/dashboard', function () {

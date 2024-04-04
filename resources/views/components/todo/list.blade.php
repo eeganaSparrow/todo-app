@@ -77,7 +77,20 @@
     @foreach($expirationGroup as $expirationtime)
         <div class="flex">
             <p class="text-xl mt-5 mb-2 mx-4">{{ $expirationtime }}</p>
-            <p class="text-md mt-5 mb-2 mx-4">まとめて削除</p>
+            <form action="{{ route('todo.deletebydate', ['expirationtime' => $expirationtime]) }}"
+                class="text-md mt-5 mb-2 mx-4" method="post">
+                @method('DELETE')
+                @csrf
+                <button type="submit"
+                    class="pt-0.5 pb-1 px-2 ml-2
+                        text-sm font-medium text-gray-100
+                        border rounded-md border-transparent shadow-sm bg-red-400
+                        hover:bg-red-300
+                        focus:outline-none focus:ring-2 focus:ring-offset-2
+                        focus:ring-red-400">
+                    まとめて削除
+                </button>
+            </form>            
         </div>
         <div class="flex flex-wrap flex-between justify-items-center mx-5 last:mb-20">
             <div class="flex-item">

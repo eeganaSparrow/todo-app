@@ -9,7 +9,7 @@
                     <span><?php $user = Auth::user(); ?>{{ $user->name }}</span>
                 </summary>
 
-                <div class="bg-gray-100 rounded shadow-md absolute right-0 w-auto pb-2 text-center cursor-pointer">
+                <div class="bg-gray-100 rounded shadow-md absolute right-0 w-auto  text-center cursor-pointer">
                     <div>
                         <form action="{{ route('logout')}}" method="post">
                         @csrf
